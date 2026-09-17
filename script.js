@@ -42,21 +42,8 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 
-    const observer = new IntersectionObserver(
-        function (entries) {
-            entries.forEach(function (entry) {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('is-visible');
-                    observer.unobserve(entry.target);
-                }
-            });
-        },
-        { threshold: 0.2, rootMargin: '0px 0px -10% 0px' }
-    );
-
     document.querySelectorAll('.service-card').forEach(function (card, i) {
-        card.style.transitionDelay = (i % 3) * 0.08 + 's';
-        observer.observe(card);
+        card.style.animationDelay = (i % 3) * 0.08 + 's';
     });
 
     const yearEl = document.getElementById('year');
