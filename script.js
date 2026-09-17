@@ -30,26 +30,6 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     });
 
-    const rosterToggle = document.getElementById('rosterToggle');
-    const rosterList = document.getElementById('rosterList');
-    const rosterCount = document.getElementById('rosterCount');
-
-    if (rosterToggle && rosterList && rosterCount) {
-        const total = rosterList.querySelectorAll('li').length;
-        const shown = total - rosterList.querySelectorAll('li.extra').length;
-
-        rosterCount.textContent = shown + ' of ' + total + ' shown';
-
-        rosterToggle.addEventListener('click', function () {
-            const expanded = rosterList.classList.toggle('show-all');
-            rosterToggle.textContent = expanded ? '− Show fewer' : '+ Show full roster';
-            rosterToggle.setAttribute('aria-expanded', String(expanded));
-            rosterCount.textContent = expanded
-                ? total + ' of ' + total + ' shown'
-                : shown + ' of ' + total + ' shown';
-        });
-    }
-
     const yearEl = document.getElementById('year');
     if (yearEl) yearEl.textContent = new Date().getFullYear();
 });
