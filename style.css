@@ -408,44 +408,6 @@ a { color: inherit; }
 
 .item-desc { max-width: 64ch; color: var(--ink-soft); }
 
-/* ---------- Roster ---------- */
-.roster {
-    columns: 4;
-    column-gap: var(--gut);
-    border-top: 1px solid var(--rule);
-    padding-top: 1.25rem;
-}
-
-.roster li {
-    break-inside: avoid;
-    list-style: none;
-    font-family: var(--mono);
-    font-size: 0.82rem;
-    line-height: 1.9;
-    display: flex;
-    gap: 0.6rem;
-}
-.roster li::before {
-    content: '—';
-    color: var(--rule);
-    flex: none;
-}
-.roster-foot {
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    gap: 1rem;
-    border-top: 1px solid var(--rule);
-    margin-top: 1.25rem;
-    padding-top: 0.75rem;
-    font-family: var(--mono);
-    font-size: 0.68rem;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: var(--ink-soft);
-    font-variant-numeric: tabular-nums;
-}
-
 /* ---------- Split rows: copy and plate carry equal weight ---------- */
 .split {
     display: grid;
@@ -613,7 +575,6 @@ a.contact-line:hover .contact-val { color: var(--stamp); }
 /* ---------- Responsive ---------- */
 @media (max-width: 1040px) {
     :root { --rail: 8.5rem; --gut: 1.75rem; }
-    .roster { columns: 3; }
     .mast-strap { display: none; }
     .mast-nav { gap: 1.1rem; }
     .split .plate-img { min-height: 300px; }
@@ -641,7 +602,6 @@ a.contact-line:hover .contact-val { color: var(--stamp); }
     .leader { display: none; }
     .item > .label { margin-bottom: 0.6rem; }
 
-    .roster { columns: 2; }
 
     .mast-nav {
         position: absolute;
@@ -666,7 +626,6 @@ a.contact-line:hover .contact-val { color: var(--stamp); }
 }
 
 @media (max-width: 520px) {
-    .roster { columns: 1; }
     .contact-key { width: 5.5rem; }
 }
 
