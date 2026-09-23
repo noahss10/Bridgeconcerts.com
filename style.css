@@ -510,7 +510,19 @@ a { color: inherit; }
     overflow: hidden;
     text-overflow: ellipsis;
 }
-a.contact-line:hover .contact-val { color: var(--stamp); }
+/* only the anchor rows get the affordance — languages and markets stay plain */
+a.contact-line .contact-val {
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 5px;
+    text-decoration-color: var(--rule);
+    transition: color 0.15s linear, text-decoration-color 0.15s linear;
+}
+
+a.contact-line:hover .contact-val {
+    color: var(--stamp);
+    text-decoration-color: var(--stamp);
+}
 
 /* ---------- Footer ---------- */
 .footer {
