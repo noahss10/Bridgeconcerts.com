@@ -16,6 +16,20 @@
 </head>
 <body>
 
+<script>
+/* Sets the flag the reveal styles hang off, before first paint so nothing
+   flashes. Skipped when the visitor prefers reduced motion, and released
+   after 3s if script.js never arrives, so copy can't stay hidden. */
+(function () {
+    if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    var root = document.documentElement;
+    root.classList.add('js-motion');
+    setTimeout(function () {
+        if (!window.__revealReady) root.classList.remove('js-motion');
+    }, 3000);
+})();
+</script>
+
 <a class="skip-link" href="#main">Skip to content</a>
 
 <header class="masthead">
@@ -52,7 +66,7 @@
                 <span class="toc-foot">China ⇄ United States<br>English · <span class="cjk">中文</span></span>
             </nav>
             <div>
-                <h1>Bringing the world closer, one show at a time</h1>
+                <h1 class="hero-title">Bringing the world closer, one show at a time</h1>
                 <div class="hero-body">
                     <p class="hero-lede">We are a bridge between the Eastern entertainment market and Western artists — providing end-to-end support from planning and coordination to on-site execution and post-show care.</p>
                     <p class="hero-lede">Our work extends beyond the stage, ensuring every collaboration is supported with clarity, care, and consistency.</p>

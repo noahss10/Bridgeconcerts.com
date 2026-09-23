@@ -584,6 +584,54 @@ a.contact-line:hover .contact-val {
 }
 .footer-bottom .cjk { font-family: var(--cjk); letter-spacing: 0.05em; }
 
+/* ---------- Motion ---------- */
+
+/* Plates hold still while the page scrolls past them. Pointer devices only:
+   iOS renders fixed attachment at the wrong scale, so touch keeps a normal
+   cover crop. */
+@media (min-width: 861px) and (hover: hover) {
+    .plate-img,
+    .plate-wide { background-attachment: fixed; background-position: center; }
+}
+
+/* Resting state. Only applies once the inline script sets .js-motion, so a
+   visitor without JS gets the page fully visible. */
+.js-motion .toc,
+.js-motion .hero-title,
+.js-motion .hero-body,
+.js-motion .hero-actions,
+.js-motion .sec-head,
+.js-motion .legend,
+.js-motion .item,
+.js-motion .mission-body,
+.js-motion .mission-sig,
+.js-motion .split-copy,
+.js-motion .statement,
+.js-motion .statement-note,
+.js-motion .contact-line {
+    opacity: 0;
+    transform: translateY(16px);
+    filter: blur(5px);
+}
+
+/* Plates fade only — a transform or filter on them would cancel the fixed
+   background attachment above. */
+.js-motion .plate { opacity: 0; }
+
+.js-motion .is-in {
+    opacity: 1;
+    transform: translateY(0);
+    filter: blur(0px);
+    transition:
+        opacity 1.15s cubic-bezier(0.16, 1, 0.3, 1) var(--d, 0s),
+        transform 1.15s cubic-bezier(0.16, 1, 0.3, 1) var(--d, 0s),
+        filter 1.15s cubic-bezier(0.16, 1, 0.3, 1) var(--d, 0s);
+}
+
+.js-motion .plate.is-in {
+    transition: opacity 1.5s cubic-bezier(0.16, 1, 0.3, 1) var(--d, 0s);
+}
+
 /* ---------- Responsive ---------- */
 @media (max-width: 1040px) {
     :root { --rail: 8.5rem; --gut: 1.75rem; }
