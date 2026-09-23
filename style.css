@@ -586,10 +586,10 @@ a.contact-line:hover .contact-val {
 
 /* ---------- Motion ---------- */
 
-/* Plates hold still while the page scrolls past them. Pointer devices only:
-   iOS renders fixed attachment at the wrong scale, so touch keeps a normal
-   cover crop. */
-@media (min-width: 861px) and (hover: hover) {
+/* Plates hold still while the page scrolls past them. Gated on pointer type,
+   not width — a narrow desktop window should still get it, while iOS is kept
+   out because it renders fixed attachment at the wrong scale. */
+@media (hover: hover) and (pointer: fine) {
     .plate-img,
     .plate-wide { background-attachment: fixed; background-position: center; }
 }
@@ -623,13 +623,18 @@ a.contact-line:hover .contact-val {
     transform: translateY(0);
     filter: blur(0px);
     transition:
-        opacity 1.15s cubic-bezier(0.16, 1, 0.3, 1) var(--d, 0s),
-        transform 1.15s cubic-bezier(0.16, 1, 0.3, 1) var(--d, 0s),
-        filter 1.15s cubic-bezier(0.16, 1, 0.3, 1) var(--d, 0s);
+        opacity 2s cubic-bezier(0.16, 1, 0.3, 1) var(--d, 0s),
+        transform 2s cubic-bezier(0.16, 1, 0.3, 1) var(--d, 0s),
+        filter 2s cubic-bezier(0.16, 1, 0.3, 1) var(--d, 0s);
 }
 
+/* Must land on none, not translateY(0)/blur(0px): any non-none transform or
+   filter makes the plate a containing block and the fixed background then
+   resolves against the element instead of the viewport, killing the effect. */
 .js-motion .plate.is-in {
-    transition: opacity 1.5s cubic-bezier(0.16, 1, 0.3, 1) var(--d, 0s);
+    transform: none;
+    filter: none;
+    transition: opacity 2.2s cubic-bezier(0.16, 1, 0.3, 1) var(--d, 0s);
 }
 
 /* ---------- Responsive ---------- */
